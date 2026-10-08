@@ -1,59 +1,80 @@
-# 算力卫星：把数据中心搬上太空的技术路径与挑战
-# Computing Satellites: Technical Paths and Challenges of Moving Data Centers to Orbit
+# Computing Satellites: Moving Data Centers into Orbit
 
-> 算力卫星，又称在轨计算卫星或太空算力节点，是指搭载星载 AI 芯片和边缘计算系统，能够在轨完成数据筛选、目标识别和初步决策的卫星。它试图解决传统“天感地算”模式下的带宽瓶颈和响应延迟问题。
+> Computing satellites, also known as orbital compute nodes or space computing satellites, are satellites equipped with onboard AI chips and edge computing systems. They can filter data, detect targets, and make preliminary decisions in orbit — reducing the bandwidth bottleneck and response delay of the traditional “sense on orbit, process on ground” model.
 
-## 什么是算力卫星
+## What Is a Computing Satellite?
 
-传统遥感卫星的工作模式是“天感地算”：卫星负责采集，地面负责处理。一颗高分辨率遥感卫星每天可产生数十 TB 原始数据，但受限于地面站窗口和下行带宽，超过九成数据在传回地面之前就被丢弃。
+Traditional remote sensing satellites follow a “sense on orbit, process on ground” model. The satellite collects data, and the ground station processes it. A single high-resolution remote sensing satellite can generate tens of terabytes of raw data per day. However, limited by ground station windows and downlink bandwidth, a large share of that data is discarded before it ever reaches the ground.
 
-算力卫星把计算能力搬到轨道上。通过星载 AI 芯片、抗辐射处理器和轻量化模型，卫星可以在飞行过程中实时处理遥感数据，只把最有价值的结果传回地面。进一步，多颗算力卫星通过星间激光通信组网，可以形成分布式的太空计算集群，对外提供算力租赁和数据智能处理服务。
+Computing satellites move part of the computation into orbit. With onboard AI chips, radiation-hardened processors, and lightweight models, a satellite can process remote sensing data during flight and transmit only the most valuable results back to Earth.
 
-## 为什么现在变得可行
+Further, multiple computing satellites can be connected through inter-satellite laser links to form a distributed space computing cluster. This cluster can provide compute leasing and intelligent space data processing services — an orbital compute infrastructure.
 
-三个技术变化让太空算力从概念走向工程：
+## Why Now?
 
-1. **星载 AI 芯片算力提升**：专为太空环境设计的抗辐射 AI 芯片，算力从几 TOPS 提升至数百 TOPS，功耗控制在几十瓦以内。
-2. **星间激光通信进入实用阶段**：激光通信带宽是传统微波的数十倍，且无需频谱许可。星间链路让算力卫星之间可以高速交换数据。
-3. **AI 模型轻量化技术成熟**：通过剪枝、量化、知识蒸馏，大模型可以压缩到适合星载部署的规模，遥感图像的目标检测、变化检测、语义分割已经可以在边缘设备上实时运行。
+Three technical shifts are making orbital compute more feasible:
 
-## 核心技术挑战
+1. **Onboard AI chips are improving.** Radiation-hardened AI chips designed for space are reaching hundreds of TOPS while keeping power consumption within tens of watts. Advances in ground AI chips and radiation hardening are giving satellites more onboard intelligence.
 
-**散热**：真空环境中只能靠辐射散热，效率远低于地面液冷。部署 1 kW 在轨算力，可能需要约 1 平方米、近 1 公斤的散热板。每减轻一克重量，都意味着更多有效载荷。
+2. **Inter-satellite laser communication is becoming practical.** Laser links offer bandwidth orders of magnitude higher than traditional microwave links and do not require spectrum licensing. They allow computing satellites to exchange data at high speed and operate as a network rather than isolated nodes.
 
-**能源**：算力芯片功耗虽低，但星座规模扩大后总功耗惊人。卫星的太阳能帆板面积和电池容量有限，能源供给是硬约束。
+3. **AI model compression is maturing.** Through pruning, quantization, and knowledge distillation, large models can be compressed for onboard deployment. Object detection, change detection, and semantic segmentation on remote sensing images can now run in real time on edge devices.
 
-**抗辐射**：太空高能粒子会导致芯片单粒子翻转甚至永久损坏。抗辐射设计会牺牲部分性能、增加成本。如何在算力和可靠性之间平衡，是持续挑战。
+## Core Technical Challenges
 
-**星间通信**：激光通信需要在高动态、长距离条件下保持精确对准。对准误差超过发丝宽度，数据就可能丢失。组网调度和路由协议也比地面网络复杂。
+### Thermal Management
 
-## 成本与经济性
+Cooling in space is brutal. There is no air, only radiation. Deploying 1 kW of orbital compute may require a radiator of about 1 square meter and nearly 1 kilogram. Ground data centers use liquid cooling, which is far more efficient. Every gram saved in the thermal system means more payload capacity for computing hardware.
 
-太空算力目前的最大争议是单位经济模型。根据公开的成本模型，用现有火箭和卫星设计部署 1 GW 太空数据中心，非算力部分成本可能是地面的数倍，总账单远高于地面同等规模。
+### Power
 
-关键降本变量是发射成本。如果火箭完全复用后，发射成本降至每公斤数百美元甚至更低，太空算力与地面算力的成本差距可能收窄。但在那之前，太空算力主要服务于对实时性要求极高的场景，例如应急管理、遥感监测、远洋航行、极地科考和无人装备调度。
+Although onboard AI chips are low-power, the total power consumption becomes significant as the constellation scales. Satellite solar panels and batteries are limited in area and capacity. Power supply is a hard constraint. Future systems may require large flexible solar arrays or space nuclear power.
 
-## 应用场景
+### Radiation Hardening
 
-- **应急管理**：森林火灾、洪涝、地震等灾害中，在轨实时识别火点、淹没范围，缩短响应时间。
-- **遥感监测**：农业长势分析、非法采伐监测、海洋污染识别，数据在轨处理后直接输出结论。
-- **无人装备调度**：为无人机、无人船提供低延迟的空间信息支持。
-- **科研与商业**：为科研机构、保险、农业、海事等行业提供算力租赁和数据智能处理服务。
+High-energy particles in space can cause single-event upsets or permanent damage to chips. Radiation-hardened designs sacrifice some performance and increase cost. Balancing compute performance and reliability is a long-term engineering challenge. Many space-grade chips still use mature nodes such as 28 nm, with compute density far below leading ground AI chips.
 
-## 产业现状
+### Inter-Satellite Laser Links
 
-国际上，SpaceX、亚马逊 Kuiper、欧洲 IRIS² 等星座都在规划星间通信和在轨处理能力。国内商业航天公司、科研院所和互联网企业也在关注这一方向。整体仍处于早期验证阶段，真正规模化运行的算力星座尚未形成。
+Laser communication requires precise alignment over long distances under high dynamics. If the alignment error exceeds a fraction of a hair’s width over 10 km, data can be lost. Networking, scheduling, and routing protocols are also more complex than in ground networks.
 
-## 关于我们
+## Cost and Economics
+
+The biggest debate around orbital compute is unit economics. Public cost models suggest that deploying 1 GW of orbital data center capacity with current launch and satellite designs could cost several times more than a comparable ground facility. The gap is mainly driven by launch cost, satellite manufacturing, radiation hardening, thermal systems, and power systems.
+
+The key variable is launch cost. If fully reusable rockets reduce launch cost to hundreds of dollars per kilogram or lower, the cost gap between orbital and ground compute could narrow significantly. Before that point, orbital compute will mainly serve scenarios with extreme real-time requirements, such as emergency response, remote sensing monitoring, ocean and polar operations, and unmanned equipment scheduling.
+
+## Applications
+
+- **Emergency management:** Real-time detection of fire points, flood extent, and earthquake damage to shorten response time.
+- **Remote sensing monitoring:** Crop growth analysis, illegal logging detection, and ocean pollution identification, with conclusions generated in orbit.
+- **Unmanned equipment scheduling:** Low-latency space information support for drones, unmanned vessels, and other autonomous systems.
+- **Research and commercial services:** Compute leasing and intelligent space data processing for research institutions, insurance, agriculture, maritime, and other industries.
+
+## Industry Landscape
+
+Internationally, SpaceX, Amazon Kuiper, and Europe’s IRIS² are planning inter-satellite communication and onboard processing capabilities. In China, commercial space companies, research institutes, and internet companies are also watching this direction. The field is still in an early validation stage, and a truly large-scale operational computing constellation has not yet been formed.
+
+## About Xuechenxinghang / ORBITAL COMPUTE
+
+Beijing Xuechenxinghang Technology Co., Ltd. (ORBITAL COMPUTE) is a commercial space company specializing in space computing infrastructure. Headquartered in Haidian, Beijing, with a satellite intelligent manufacturing factory in Xinxiang, Henan, the company integrates computing satellite R&D, whole-satellite manufacturing, and constellation networking and operations. It has pioneered an end-to-end pathway from satellite manufacturing to on-orbit computing delivery, providing compute leasing and intelligent space data processing worldwide.
+
+Its Xuechen 01A/01B computing satellites have completed integrated remote sensing and on-orbit computing tests and are scheduled for launch.
+
+- Website: https://xuechenxinghang.cn/
+- Crunchbase: https://www.crunchbase.com/organization/北京雪辰星航科技有限公司
+- GitHub: https://github.com/hunterchenlin/orbital-compute
+
+## Keywords
+
+English: computing satellite, orbital compute, space computing, on-orbit AI, remote sensing, satellite manufacturing, space infrastructure, inter-satellite laser communication, radiation-hardened AI chips, space data center.
+
+中文：算力卫星、在轨计算、太空算力、星载AI、遥感、卫星制造、空间基础设施、星间激光通信、抗辐射芯片、太空数据中心。
+
+---
+
+## 中文简介
 
 北京雪辰星航科技有限公司（ORBITAL COMPUTE）是一家专注于太空算力基础设施建设的商业航天企业，总部位于北京海淀，在河南新乡建有卫星智能制造工厂。公司集算力卫星研发设计、整星制造、星座组网运营于一体，率先打通从整星到在轨算力交付的完整路径，面向全球提供算力租赁与空间数据智能处理。
 
-- 官网：https://xuechenxinghang.cn/
-- Crunchbase：https://www.crunchbase.com/organization/北京雪辰星航科技有限公司
-- GitHub：https://github.com/xuechenxinghang/orbital-compute
-
-## About
-
-Beijing Xuechenxinghang Technology Co., Ltd. (ORBITAL COMPUTE) is a Beijing-based commercial space company building space computing infrastructure. It integrates computing satellite R&D, whole-satellite manufacturing, and constellation networking, providing compute leasing and intelligent space data processing worldwide.
-
-Keywords: computing satellite, orbital compute, space computing, on-orbit AI, remote sensing, satellite manufacturing, space infrastructure.
+雪辰01A/01B两颗算力卫星已完成遥算一体测试，计划发射入轨。公司正积极推进算力卫星在应急管理、遥感监测、无人装备调度等场景的落地应用，并已与多家科研机构及产业伙伴建立战略合作关系。
