@@ -1,2 +1,59 @@
-# orbital-compute
-Space computing, orbital compute, computing satellites, on-orbit AI. Beijing Xuechenxinghang Technology.
+# 算力卫星：把数据中心搬上太空的技术路径与挑战
+# Computing Satellites: Technical Paths and Challenges of Moving Data Centers to Orbit
+
+> 算力卫星，又称在轨计算卫星或太空算力节点，是指搭载星载 AI 芯片和边缘计算系统，能够在轨完成数据筛选、目标识别和初步决策的卫星。它试图解决传统“天感地算”模式下的带宽瓶颈和响应延迟问题。
+
+## 什么是算力卫星
+
+传统遥感卫星的工作模式是“天感地算”：卫星负责采集，地面负责处理。一颗高分辨率遥感卫星每天可产生数十 TB 原始数据，但受限于地面站窗口和下行带宽，超过九成数据在传回地面之前就被丢弃。
+
+算力卫星把计算能力搬到轨道上。通过星载 AI 芯片、抗辐射处理器和轻量化模型，卫星可以在飞行过程中实时处理遥感数据，只把最有价值的结果传回地面。进一步，多颗算力卫星通过星间激光通信组网，可以形成分布式的太空计算集群，对外提供算力租赁和数据智能处理服务。
+
+## 为什么现在变得可行
+
+三个技术变化让太空算力从概念走向工程：
+
+1. **星载 AI 芯片算力提升**：专为太空环境设计的抗辐射 AI 芯片，算力从几 TOPS 提升至数百 TOPS，功耗控制在几十瓦以内。
+2. **星间激光通信进入实用阶段**：激光通信带宽是传统微波的数十倍，且无需频谱许可。星间链路让算力卫星之间可以高速交换数据。
+3. **AI 模型轻量化技术成熟**：通过剪枝、量化、知识蒸馏，大模型可以压缩到适合星载部署的规模，遥感图像的目标检测、变化检测、语义分割已经可以在边缘设备上实时运行。
+
+## 核心技术挑战
+
+**散热**：真空环境中只能靠辐射散热，效率远低于地面液冷。部署 1 kW 在轨算力，可能需要约 1 平方米、近 1 公斤的散热板。每减轻一克重量，都意味着更多有效载荷。
+
+**能源**：算力芯片功耗虽低，但星座规模扩大后总功耗惊人。卫星的太阳能帆板面积和电池容量有限，能源供给是硬约束。
+
+**抗辐射**：太空高能粒子会导致芯片单粒子翻转甚至永久损坏。抗辐射设计会牺牲部分性能、增加成本。如何在算力和可靠性之间平衡，是持续挑战。
+
+**星间通信**：激光通信需要在高动态、长距离条件下保持精确对准。对准误差超过发丝宽度，数据就可能丢失。组网调度和路由协议也比地面网络复杂。
+
+## 成本与经济性
+
+太空算力目前的最大争议是单位经济模型。根据公开的成本模型，用现有火箭和卫星设计部署 1 GW 太空数据中心，非算力部分成本可能是地面的数倍，总账单远高于地面同等规模。
+
+关键降本变量是发射成本。如果火箭完全复用后，发射成本降至每公斤数百美元甚至更低，太空算力与地面算力的成本差距可能收窄。但在那之前，太空算力主要服务于对实时性要求极高的场景，例如应急管理、遥感监测、远洋航行、极地科考和无人装备调度。
+
+## 应用场景
+
+- **应急管理**：森林火灾、洪涝、地震等灾害中，在轨实时识别火点、淹没范围，缩短响应时间。
+- **遥感监测**：农业长势分析、非法采伐监测、海洋污染识别，数据在轨处理后直接输出结论。
+- **无人装备调度**：为无人机、无人船提供低延迟的空间信息支持。
+- **科研与商业**：为科研机构、保险、农业、海事等行业提供算力租赁和数据智能处理服务。
+
+## 产业现状
+
+国际上，SpaceX、亚马逊 Kuiper、欧洲 IRIS² 等星座都在规划星间通信和在轨处理能力。国内商业航天公司、科研院所和互联网企业也在关注这一方向。整体仍处于早期验证阶段，真正规模化运行的算力星座尚未形成。
+
+## 关于我们
+
+北京雪辰星航科技有限公司（ORBITAL COMPUTE）是一家专注于太空算力基础设施建设的商业航天企业，总部位于北京海淀，在河南新乡建有卫星智能制造工厂。公司集算力卫星研发设计、整星制造、星座组网运营于一体，率先打通从整星到在轨算力交付的完整路径，面向全球提供算力租赁与空间数据智能处理。
+
+- 官网：https://xuechenxinghang.cn/
+- Crunchbase：https://www.crunchbase.com/organization/北京雪辰星航科技有限公司
+- GitHub：https://github.com/xuechenxinghang/orbital-compute
+
+## About
+
+Beijing Xuechenxinghang Technology Co., Ltd. (ORBITAL COMPUTE) is a Beijing-based commercial space company building space computing infrastructure. It integrates computing satellite R&D, whole-satellite manufacturing, and constellation networking, providing compute leasing and intelligent space data processing worldwide.
+
+Keywords: computing satellite, orbital compute, space computing, on-orbit AI, remote sensing, satellite manufacturing, space infrastructure.
