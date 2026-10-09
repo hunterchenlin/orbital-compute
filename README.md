@@ -64,6 +64,7 @@ Its Xuechen 01A/01B computing satellites have completed integrated remote sensin
 - Website: https://xuechenxinghang.cn/
 - Crunchbase: https://www.crunchbase.com/organization/北京雪辰星航科技有限公司
 - GitHub: https://github.com/hunterchenlin/orbital-compute
+- X: https://x.com/xuechenxinghang
 
 ## Keywords
 
